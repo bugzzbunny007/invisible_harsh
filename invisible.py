@@ -12,40 +12,36 @@ import time
 #      120 degrees corresponds to the green color, and 240 degrees corresponds to the blue color.
 #Saturation : This channel encodes the intensity/purity of color. For example, pink is less saturated than red.
 #$Value : This channel encodes the brightness of color. Shading and gloss components of an image appear in this channel
-#reading the videocapture video
-
-
+#reading the videocapture video  
 print(cv2.__version__)
-capture_video = cv2.VideoCapture(0)
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480))
+capture_video = cv2.VideoCapture("video.mp4")
 
 #give the camera to warm up
-time.sleep(1)
-count = 0
-background = 0
+time.sleep(1) 
+count = 0 
+background = 0 
 
 #capturing the background in range of 60
 for i in range(60):
 	return_val , background = capture_video.read()
 	if return_val == False :
-		continue
+		continue 
 
 background = np.flip(background, axis=1)
 
-# we are reading from video
+# we are reading from video 
 while (capture_video.isOpened()):
 	return_val, img = capture_video.read()
 	if not return_val :
-		break
+		break 
 	count = count + 1
 	img = np.flip(img , axis=1)
 	# convert the image - BGR to HSV
-	# as we focused on detection of red color
+	# as we focused on detection of red color 
 	hsv = cv2.cvtColor(img , cv2.COLOR_BGR2HSV)
 	# generating mask to detect red color
 	# HSV
-	# it should be mono-color cloth
+	# it should be mono-color cloth 
 	# lower range
 	lower_red = np.array([100, 40, 40])
 	upper_red = np.array([100, 255, 255])
@@ -68,11 +64,10 @@ while (capture_video.isOpened()):
 	final_output = cv2.addWeighted(res1,1,res2,1,0)
 
 	cv2.imshow("INVISIBLE MAN",final_output)
-	out.write(final_output)
 	k = cv2.waitKey(10)
-	if k == 27:		#press esc to stop this window
+	if k == 27:
+		break				#press esc to stop this window
 					#The resultant video will be saved as output.avi
-		break
 
 
 
