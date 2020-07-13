@@ -7,4 +7,4 @@ I am taking red cloth. If you are taking some other cloth, the code will remain 
 https://www.linkedin.com/in/harshyadav-99/
 
 ![Image of Project](https://github.com/bugzzbunny007/invisible_harsh/blob/master/1.png)
-![Image of Project](https://github.com/bugzzbunny007/invisible_harsh/blob/master/1.png)
+![Image of Project](https://github.com/bugzzbunny007/invisible_harsh/blob/master/2.png)
